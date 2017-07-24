@@ -1,5 +1,5 @@
 {
-  "name": "wechat-server-demo",
+  "name": "fe",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,11 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "connect": "^3.6.2",
-    "express": "^4.15.3",
-    "wechat": "^2.1.0",
-    "wechat-api": "^1.34.0",
-    "wechat-oauth": "^1.2.1"
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
   }
 }
