@@ -15,3 +15,11 @@
 - Token: `boke`
 - EncodingAESKey: `sg8mxEiU8g0aDQ4Z2Qtq9mrnGpWt1KulwTEdx9q3hY8`
 - 消息加解密方式: 明文模式
+
+## 微信链接
+
+- [微信网页授权(获取openid)](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842)
+
+- [wechat-oauth](https://github.com/node-webot/wechat-oauth) 前端
+- [wechat](https://github.com/node-webot/wechat) 后端
+- [wechat-api](https://github.com/node-webot/wechat-api) 后端
