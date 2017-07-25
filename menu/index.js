@@ -36,8 +36,8 @@ const menu = {
                 {
                     type: 'view',
                     name: '绑定',
-                    url: 'http://wechat.zhouzhongyuan.com/bind',
-                    // "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd1d5c242c8a2968f&redirect_uri=http%3A%2F%2Fwechat.zhouzhongyuan.com%2Fbind&response_type=code&scope=snsapi_base&state=state#wechat_redirect"
+                    // url: 'http://wechat.zhouzhongyuan.com/bind',
+                    url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7548a199e9b0508e&redirect_uri=http%3A%2F%2Fwechat.zhouzhongyuan.com%2Fbind&response_type=code&scope=snsapi_base&state=state#wechat_redirect',
                 },
                 {
                     type: 'view',

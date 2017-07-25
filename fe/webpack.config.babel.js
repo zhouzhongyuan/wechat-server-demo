@@ -1,12 +1,12 @@
 module.exports = {
-    entry: "./auth",
+    entry: './bind/index',
     output: {
-        path: __dirname + "/dist",
-        filename: "bundle.js"
+        path: `${__dirname}/dist`,
+        filename: 'bundle.js',
     },
     node: {
         fs: 'empty',
-        child_process: 'empty'
+        child_process: 'empty',
     },
     watch: true,
-}
+};
