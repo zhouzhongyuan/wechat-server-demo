@@ -1,58 +1,56 @@
-require('./menu/index');
-require('./group/index');
+import express from 'express';
+import wechat from 'wechat';
+import path from 'path';
+import config from './config';
 
-const express = require('express');
-var wechat = require('wechat');
-var config = require('./config');
-var connect = require('connect');
-const path = require('path');
+import('./menu/index');
+import('./group/index');
 
-const app = express()
-console.log(config);
+const app = express();
 app.use(express.query());
-app.use('/static', express.static(path.join(__dirname, 'fe')))
-app.use('/wechat', wechat(config, function (req, res, next) {
+app.use('/static', express.static(path.join(__dirname, 'fe')));
+app.use('/wechat', wechat(config, (req, res, next) => {
     // 微信输入信息都在req.weixin上
-    var message = req.weixin;
+    const message = req.weixin;
     console.log(message);
     const content = message.Content;
-    switch (content){
+    switch (content) {
         case '文本':
-            //res.reply('Hello world!');
-            res.reply({type: "text", content: 'Hello world!'});
+            // res.reply('Hello world!');
+            res.reply({ type: 'text', content: 'Hello world!' });
             break;
         case '图片':
             res.reply({
-                type: "image",
+                type: 'image',
                 content: {
-                    mediaId: 'mediaId'
-                }
+                    mediaId: 'mediaId',
+                },
             });
             break;
         case '语音':
             res.reply({
-                type: "voice",
+                type: 'voice',
                 content: {
-                    mediaId: 'mediaId'
-                }
+                    mediaId: 'mediaId',
+                },
             });
             break;
         case '视频':
             res.reply({
-                type: "video",
+                type: 'video',
                 content: {
                     title: '来段视频吧',
                     description: '女神与高富帅',
-                    mediaId: 'mediaId'
-                }
+                    mediaId: 'mediaId',
+                },
             });
             break;
         case '音乐':
             res.reply({
-                title: "来段音乐吧",
-                description: "一无所有",
-                musicUrl: "http://other.web.rh01.sycdn.kuwo.cn/resource/n2/39/42/302397389.mp3",
-                hqMusicUrl: "http://other.web.rh01.sycdn.kuwo.cn/resource/n2/39/42/302397389.mp3",
+                title: '来段音乐吧',
+                description: '一无所有',
+                musicUrl: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n2/39/42/302397389.mp3',
+                hqMusicUrl: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n2/39/42/302397389.mp3',
                 // thumbMediaId: "https://i.ytimg.com/vi/m7uk0-vlpP0/hqdefault.jpg"
             });
             break;
@@ -62,37 +60,26 @@ app.use('/wechat', wechat(config, function (req, res, next) {
                     title: '军师联盟',
                     description: '大军师司马懿之军师联盟',
                     picurl: 'https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/h%3D250/sign=a3d2d380bcfd5266b82b3b119b189799/8601a18b87d6277fbc36ed5322381f30e924fcb1.jpg',
-                    url: 'https://baike.baidu.com/item/%E5%A4%A7%E5%86%9B%E5%B8%88%E5%8F%B8%E9%A9%AC%E6%87%BF%E4%B9%8B%E5%86%9B%E5%B8%88%E8%81%94%E7%9B%9F/20818349?fromtitle=%E5%86%9B%E5%B8%88%E8%81%94%E7%9B%9F&fromid=18903656'
-                }
+                    url: 'https://baike.baidu.com/item/%E5%A4%A7%E5%86%9B%E5%B8%88%E5%8F%B8%E9%A9%AC%E6%87%BF%E4%B9%8B%E5%86%9B%E5%B8%88%E8%81%94%E7%9B%9F/20818349?fromtitle=%E5%86%9B%E5%B8%88%E8%81%94%E7%9B%9F&fromid=18903656',
+                },
             ]);
             break;
         case '社交功能':
             res.reply({
                 type: 'hardware',
-                HardWare:{
+                HardWare: {
                     MessageView: 'myrank',
-                    MessageAction: 'ranklist'
-                }
-            });
-            break;
-        case 'getMenu':
-            var WechatAPI = require('wechat-api');
-            var api = new WechatAPI(config.appid, config.appsecret);
-            api.getMenu(function (err, result) {
-                console.log(err, result);
+                    MessageAction: 'ranklist',
+                },
             });
             break;
         default:
-            res.reply({type: "text", content: '关键词不对'});
+            res.reply({ type: 'text', content: '关键词不对' });
     }
 }));
-
-
-app.get('/bind', function (req, res) {
-    res.sendFile(path.join(__dirname + '/fe/bind/index.html'));
+app.get('/bind', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/fe/bind/index.html`));
 });
-
-
-app.listen(4000, function () {
-    console.log('Example app listening on port 4000!')
-})
+app.listen(4000, () => {
+    console.log('wechat-server-demo listening on port 4000');
+});
