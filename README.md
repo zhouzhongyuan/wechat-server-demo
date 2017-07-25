@@ -25,7 +25,7 @@
 
 - [微信网页授权(获取openid)](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842)
 
-- [wechat-oauth](https://github.com/node-webot/wechat-oauth) 前端
+- [wechat-oauth](https://github.com/node-webot/wechat-oauth) 后端
 - [wechat](https://github.com/node-webot/wechat) 后端
 - [wechat-api](https://github.com/node-webot/wechat-api) 后端
 
