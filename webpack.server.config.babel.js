@@ -9,6 +9,10 @@ fs.readdirSync(path.resolve(__dirname, 'node_modules'))
 const config = {
     name: 'server',
     target: 'node',
+    node: {
+        __filename: true,
+        __dirname: true
+    },
     entry: ['babel-polyfill', path.resolve(__dirname, 'index.js')],
     output: {
         path: path.resolve(__dirname, 'dist'),

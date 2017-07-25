@@ -1,6 +1,6 @@
 alert('hi');
 var OAuth = require('wechat-oauth');
-import config from './config';
+import config from '../../config';
 var client = new OAuth(config.appid, config.appsecret);
 const redirectUrl = 'http://wechat.zhouzhongyuan.com/bind';
 var url = client.getAuthorizeURL(redirectUrl, 'state', 'snsapi_base');

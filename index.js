@@ -4,7 +4,7 @@ import path from 'path';
 import config from './config';
 
 import('./menu/index');
-import('./group/index');
+// import('./group/index');
 
 const app = express();
 app.use(express.query());
@@ -78,7 +78,7 @@ app.use('/wechat', wechat(config, (req, res, next) => {
     }
 }));
 app.get('/bind', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/fe/bind/index.html`));
+    res.sendFile(path.resolve('fe/bind', 'index.html'));
 });
 app.listen(4000, () => {
     console.log('wechat-server-demo listening on port 4000');
