@@ -9,8 +9,9 @@ import wechat from './route/wechat';
 import accessToken from './route/accessToken';
 import authorizeURL from './route/authorizeURL';
 // exec once
-import('./menu/index');
+// import('./menu/index');
 // import('./group/index');
+import('./template/index');
 
 async function init() {
     const app = express();
