@@ -6,18 +6,21 @@ import connect from './bin/connect';
 const { db } = config;
 import users from './route/users';
 import wechat from './route/wechat';
+import accessToken from './route/accessToken';
+import authorizeURL from './route/authorizeURL';
 // exec once
 // import('./menu/index');
-// import('./group/index');
+import('./group/index');
 
 async function init() {
-
     const app = express();
     app.use(express.query());
     app.use('/static', express.static(path.join(__dirname, 'fe')));
     app.use('/users', users);
     app.use('/wechat', wechat);
-    app.get('/bind', (req, res) => {
+    app.use('/wechat/accessToken', accessToken);
+    app.use('/authorizeURL', authorizeURL);
+    app.get('/wechat/bind', (req, res) => {
         res.sendFile(path.resolve('fe/bind', 'index.html'));
     });
     app.listen(4000, () => {

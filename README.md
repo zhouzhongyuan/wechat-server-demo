@@ -22,9 +22,13 @@
 - Token: `boke`
 
 ## 微信链接
+- [公众号登录](https://mp.weixin.qq.com/)
+
+- [接口调试工具-微信公众平台](https://mp.weixin.qq.com/debug/)
 
 - [微信网页授权(获取openid)](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842)
 
+- [微信测试服务号](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
 - [wechat-oauth](https://github.com/node-webot/wechat-oauth) 后端
 - [wechat](https://github.com/node-webot/wechat) 后端
 - [wechat-api](https://github.com/node-webot/wechat-api) 后端
@@ -40,3 +44,22 @@ npm run server
 ```
 npm run start
 ```
+
+## 文章
+
+- [图解微信公众号后台服务开发（nodejs版）](http://imweb.io/topic/56363fbc09e01a534b461ec1)
+
+## 获取`openid`
+### 关键点
+- 向微信服务器获取。要通过中转服务器(此服务器)向微信服务器获取。
+- `access_token`和`appsecret`同样重要，只能保存在服务器中。
+- code只能使用一次
+# 一定要填写 网页授权域名
+# 一定要填写 网页授权域名
+# 一定要填写 网页授权域名
+# 一定要填写 网页授权域名
+# 一定要填写 网页授权域名
+
+# 如果出现`invalid code`，要么是生成的URL错误，要么没有填写网页授权域名。
+# 绝对不是code被使用了两次。
+# 多清空缓存可能也有帮助。
