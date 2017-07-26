@@ -1,5 +1,6 @@
 // zhongyuan
 const zhongyuanConfig = {
+    name:'zhongyuan',
     token: 'boke',
     appid: 'wx739b9f74ab475e99',
     encodingAESKey: 'sg8mxEiU8g0aDQ4Z2Qtq9mrnGpWt1KulwTEdx9q3hY8',
@@ -9,6 +10,7 @@ const zhongyuanConfig = {
 
 // Gu
 const mingfengConfig = {
+    name:'mingfeng',
     token: 'boke',
     appid: 'wx7548a199e9b0508e',
     encodingAESKey: 'sg8mxEiU8g0aDQ4Z2Qtq9mrnGpWt1KulwTEdx9q3hY8',

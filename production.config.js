@@ -1,4 +1,5 @@
 var config = {
+    name:'boke',
     token: 'boke',
     appid: 'wxd1d5c242c8a2968f',
     encodingAESKey: 'sg8mxEiU8g0aDQ4Z2Qtq9mrnGpWt1KulwTEdx9q3hY8',
