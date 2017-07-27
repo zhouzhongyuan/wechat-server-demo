@@ -10,7 +10,7 @@ router.all('/', async (req, res, next) => {
             const openid = result.data.openid;
             res.send({ openid });
         } else {
-            console.log('router error::::', err);
+            console.log('router error::::', err);   // eslint-disable-line
             res.send(err);
         }
     });

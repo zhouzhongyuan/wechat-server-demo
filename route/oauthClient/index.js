@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { Token } from '../../model';
 import config from '../../config';
 

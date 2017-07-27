@@ -1,22 +1,19 @@
 import mongoose, { Schema } from 'mongoose';
 
-const tokenSchema = new Schema(
-    {
+const normalAccessTokenSchema = new Schema({
         access_token: String,
         expires_in: Number,
-        refresh_token: String,
-        openid: String,
-        scope: String,
         create_at: String,
-    },
-    );
-tokenSchema.statics.getToken = function (openid, cb) {
+    });
+// TODO getToken待修改。这个表格只有一行。
+normalAccessTokenSchema.statics.getToken = function (openid, cb) {
     this.findOne({ openid }, (err, result) => {
         if (err) throw err;
         return cb(null, result);
     });
 };
-tokenSchema.statics.setToken = function (openid, token, cb) {
+// TODO setToken待修改。这个表格只有一行。
+normalAccessTokenSchema.statics.setToken = function (openid, token, cb) {
     // 有则更新，无则添加
     const query = { openid };
     const options = { upsert: true };
@@ -25,5 +22,5 @@ tokenSchema.statics.setToken = function (openid, token, cb) {
         return cb(null);
     });
 };
-const Token = mongoose.model('Token', tokenSchema);
-export default Token;
+const NormalAccessToken = mongoose.model('NormalAccessToken', normalAccessTokenSchema);
+export default NormalAccessToken;
