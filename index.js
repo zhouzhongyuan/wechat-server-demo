@@ -8,6 +8,7 @@ import users from './route/users';
 import wechat from './route/wechat';
 import accessToken from './route/accessToken';
 import authorizeURL from './route/authorizeURL';
+import token from './route/token';
 // exec once
 // import('./menu/index');
 // import('./group/index');
@@ -21,6 +22,7 @@ async function init() {
     app.use('/wechat', wechat);
     app.use('/wechat/accessToken', accessToken);
     app.use('/authorizeURL', authorizeURL);
+    app.use('/token', token);
     app.get('/wechat/bind', (req, res) => {
         res.sendFile(path.resolve('fe/bind', 'index.html'));
     });

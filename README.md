@@ -28,6 +28,7 @@
 
 - [微信网页授权(获取openid)](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842)
 
+- [获取access_token](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183)
 - [微信测试服务号](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
 - [wechat-oauth](https://github.com/node-webot/wechat-oauth) 后端
 - [wechat](https://github.com/node-webot/wechat) 后端

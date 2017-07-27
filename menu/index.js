@@ -1,4 +1,4 @@
-const api = require('../api');
+import api from '../api';
 
 import config from '../config';
 console.log(config.name);

@@ -1,5 +1,4 @@
-const api = require('../api');
-
+import api from '../api';
 // const templateId = 'uUX7IRJwHRxYxChLi7w7iuTIvgE97rkDqzTC2JPSptk';
 // const templateId = 'a3IXIJ6_YcJ5kEdMopXSxVzCa8cRwvCi5tXtpsSSkAE';
 const templateId = '3Aihi7hTsOfPF7Hj1rKPqzJK4HS2qUwi0kFLvN_sSlY';
@@ -32,10 +31,17 @@ const data = {
         color: '#173177',
     },
     remark: {
-        value: '欢迎再次购买！',
+        value: '一万年～',
         color: '#173177',
     },
 };
+/* eslint-disable no-console,no-alert */
 api.sendTemplate(openid, templateId, url, data, (err, result) => {
     console.log(err, result);
+    if (!err) {
+        console.log('发送模板消息成功', result);
+    } else {
+        console.log(err);
+    }
 });
+
