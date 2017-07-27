@@ -1,8 +1,11 @@
 module.exports = {
-    entry: ['babel-polyfill', './bind/index'],
+    entry: {
+        bind: ['babel-polyfill', './bind/index'],
+        welcome: ['babel-polyfill', './welcome/index'],
+    },
     output: {
         path: `${__dirname}/dist`,
-        filename: 'bundle.js',
+        filename: '[name].js',
     },
     target: 'web',
     node: {

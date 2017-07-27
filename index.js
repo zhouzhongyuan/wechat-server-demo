@@ -14,7 +14,7 @@ const { db } = config;
 // exec once
 // import('./menu/index');
 // import('./group/index');
-import('./template/index');
+// import('./template/index');
 
 async function init() {
     const app = express();
@@ -24,10 +24,13 @@ async function init() {
     app.use('/wechat', wechat);
     app.use('/openid', openid);
     app.use('/token', token);
-    app.use('/userInfo', userInfo);
+    app.use('/api/userInfo', userInfo);
     app.use('/authorizeURL', authorizeURL);
     app.get('/wechat/bind', (req, res) => {
         res.sendFile(path.resolve('fe/bind', 'index.html'));
+    });
+    app.get('/userInfo', (req, res) => {
+        res.sendFile(path.resolve('fe/welcome', 'index.html'));
     });
     app.listen(4000, () => {
         console.log('wechat-server-demo listening on port 4000');   // eslint-disable-line

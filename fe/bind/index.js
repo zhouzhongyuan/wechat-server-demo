@@ -29,7 +29,7 @@ async function getOpenid(code) {
     });
 }
 
-window.addEventListener('load', (event) => {
+document.addEventListener('DOMContentLoaded', (event) => {
     const code = getCode();
     console.log(code);
     getOpenid(code);
