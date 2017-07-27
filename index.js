@@ -1,14 +1,15 @@
 import express from 'express';
-// import wechat from 'wechat';
 import path from 'path';
 import config from './config';
 import connect from './bin/connect';
-const { db } = config;
 import users from './route/users';
 import wechat from './route/wechat';
 import openid from './route/openid';
 import authorizeURL from './route/authorizeURL';
 import token from './route/token';
+
+const { db } = config;
+
 // exec once
 // import('./menu/index');
 // import('./group/index');
@@ -27,11 +28,10 @@ async function init() {
         res.sendFile(path.resolve('fe/bind', 'index.html'));
     });
     app.listen(4000, () => {
-        console.log('wechat-server-demo listening on port 4000');
+        console.log('wechat-server-demo listening on port 4000');   // eslint-disable-line
     });
 
     import('./auth');
     await connect(db.uri, db.options);
-
 }
 init();
