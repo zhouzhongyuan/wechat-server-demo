@@ -1,7 +1,7 @@
+import OAuth from 'wechat-oauth';
+
 import { Token } from '../../model';
 import config from '../../config';
-
-const OAuth = require('wechat-oauth');
 
 const { appid, appsecret } = config;
 

@@ -1,7 +1,6 @@
 import fs from 'fs';
+import WechatAPI from 'wechat-api';
 import config from './config';
-
-const WechatAPI = require('wechat-api');
 
 const { appid, appsecret } = config;
 

@@ -17,6 +17,7 @@ const { db } = config;
 // import('./template/index');
 
 async function init() {
+    await connect(db.uri, db.options);
     const app = express();
     app.use(express.query());
     app.use('/static', express.static(path.join(__dirname, 'fe')));
@@ -35,8 +36,5 @@ async function init() {
     app.listen(4000, () => {
         console.log('wechat-server-demo listening on port 4000');   // eslint-disable-line
     });
-
-    import('./auth');
-    await connect(db.uri, db.options);
 }
 init();
