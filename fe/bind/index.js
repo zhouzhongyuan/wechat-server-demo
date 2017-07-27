@@ -6,7 +6,7 @@ function getCode() {
 }
 
 // TODO 向后台请求accessToken
-const api = 'http://wechat.zhouzhongyuan.com/wechat/accessToken';
+const api = 'http://wechat.zhouzhongyuan.com/openid';
 
 async function getOpenid(code) {
     const params = {

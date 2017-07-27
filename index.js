@@ -6,7 +6,7 @@ import connect from './bin/connect';
 const { db } = config;
 import users from './route/users';
 import wechat from './route/wechat';
-import accessToken from './route/accessToken';
+import openid from './route/openid';
 import authorizeURL from './route/authorizeURL';
 import token from './route/token';
 // exec once
@@ -20,7 +20,7 @@ async function init() {
     app.use('/static', express.static(path.join(__dirname, 'fe')));
     app.use('/users', users);
     app.use('/wechat', wechat);
-    app.use('/wechat/accessToken', accessToken);
+    app.use('/openid', openid);
     app.use('/authorizeURL', authorizeURL);
     app.use('/token', token);
     app.get('/wechat/bind', (req, res) => {
