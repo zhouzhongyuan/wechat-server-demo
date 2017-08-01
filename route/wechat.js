@@ -7,7 +7,7 @@ const router = Router();
 router.all('/', wechat(config, (req, res, next) => {
     // 微信输入信息都在req.weixin上
     const message = req.weixin;
-    // console.log(message);
+    console.log(message);
     const content = message.Content;
     switch (content) {
         case '文本':

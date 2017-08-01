@@ -9,15 +9,25 @@ const url = {
 
 const menu = {
     button: [
-        {
-            type: 'view',
-            name: '获取openid',
-            url: url.bind,
-        },
+        // {
+        //     type: 'view',
+        //     name: '获取openid',
+        //     url: url.bind,
+        // },
         {
             type: 'view',
             name: '芝麻开门',
             url: url.welcome,
+        },
+        {
+            type: 'scancode_push',
+            name: '扫码',
+            key: 'scanOrderId',
+        },
+        {
+            type: 'location_select',
+            name: '定位',
+            key: 'sendLoaction',
         },
     ],
 };
