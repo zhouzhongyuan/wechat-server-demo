@@ -35,7 +35,7 @@ async function init() {
         res.sendFile(path.resolve('fe/bind', 'index.html'));
     });
     app.get('/userInfo', (req, res) => {
-        res.sendFile(path.resolve('fe/welcome', 'index.html'));
+        res.sendFile(path.resolve('fe/dist', 'index.html'));
     });
     app.listen(4000, () => {
         console.log('wechat-server-demo listening on port 4000');   // eslint-disable-line

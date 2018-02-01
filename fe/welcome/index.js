@@ -1,4 +1,7 @@
-
+import wx from '../jweixin-1.2.0';
+// import wx from 'wx';
+alert(wx);
+/*
 function getCode() {
     const s = location.href;
     const codeReg = /(?:.*?)code=(.*?)&/igm;
@@ -11,7 +14,7 @@ const api = 'http://zhouzhongyuan.com/api/userInfo';
 
 function getUserInfo(code) {
     const params = {
-        code,
+        code: code,
     };
     let query;
     (function () {
@@ -60,7 +63,7 @@ let headImgEl;
 // headimgurl	用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
 // privilege	用户特权信息，json 数组，如微信沃卡用户为（chinaunicom）
 // unionid	只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
-/*document.addEventListener('DOMContentLoaded', async (event) => {
+/!*document.addEventListener('DOMContentLoaded', async (event) => {
     countryEl = document.getElementById('country');
     nicknameEl = document.getElementById('nickname');
     provinceEl = document.getElementById('province');
@@ -69,7 +72,13 @@ let headImgEl;
     const code = getCode();
     const userInfo = await getUserInfo(code);
     processUserInfo(userInfo);
-});*/
+});*!/
+
+*/
+
+
+
+
 // TODO 二维码扫描
 // JSSDK
 function getJsConfig() {
@@ -78,17 +87,15 @@ function getJsConfig() {
         jsApiList: ['chooseImage', 'scanQRCode'],
         url: location.href,
     };
-    console.log(param.url);
     const api = 'http://zhouzhongyuan.com/api/jsConfig';
 
-    let query;
+    var query;
     (function () {
         const esc = encodeURIComponent;
         query = Object.keys(param)
             .map(k => `${esc(k)}=${esc(param[k])}`)
             .join('&');
     }());
-    // console.log(query)
     const url = `${api}?${query}`;
     return new Promise((resolve, reject) => {
         fetch(url, {
