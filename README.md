@@ -1,11 +1,18 @@
 # Wechat server demo
 
 
+## 开发
+
+1. 开启mongo
+```
+sudo /usr/bin/mongod
+```
+
 ## ngrok代理
 
 - [地址](https://ngrok.cc/user.html)
 - id: `c24c645d47aec6b6`
-- command: `./sunny clientid c24c645d47aec6b6`
+- command: `./ngrok/sunny clientid c24c645d47aec6b6`
 - [自定义域名](https://domains.google.com)
 - 映射本地端口号: `4000`
 

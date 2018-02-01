@@ -7,6 +7,8 @@ import wechat from './route/wechat';
 import openid from './route/openid';
 import authorizeURL from './route/authorizeURL';
 import token from './route/token';
+import jsapiTicket from './route/jsapiTicket';
+import jsConfig from './route/jsConfig';
 import userInfo from './route/userInfo';
 
 const { db } = config;
@@ -25,7 +27,9 @@ async function init() {
     app.use('/wechat', wechat);
     app.use('/openid', openid);
     app.use('/token', token);
+    app.use('/jsapiTicket', jsapiTicket);
     app.use('/api/userInfo', userInfo);
+    app.use('/api/jsConfig', jsConfig);
     app.use('/authorizeURL', authorizeURL);
     app.get('/wechat/bind', (req, res) => {
         res.sendFile(path.resolve('fe/bind', 'index.html'));

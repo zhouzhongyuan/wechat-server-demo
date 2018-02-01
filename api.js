@@ -15,4 +15,5 @@ function saveToken(token, callback) {
 }
 
 const api = new WechatAPI(appid, appsecret, getToken, saveToken);
+
 export default api;

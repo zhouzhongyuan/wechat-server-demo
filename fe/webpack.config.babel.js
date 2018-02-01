@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = {
     entry: {
         bind: ['babel-polyfill', './bind/index'],
