@@ -44,9 +44,6 @@ sudo /usr/bin/mongod
 ## 开发流程
 
 ```
-npm run ngrok
-```
-```
 npm run server
 ```
 ```
@@ -91,4 +88,31 @@ npm run start
   Scale: '16',
   Label: '普陀区天洁大厦(上海跨国采购会展中心东60米)',
   MsgId: '6449126183665851325' }
+```
+
+
+## ngrock info
+            
+```
+id 8346cc5f327d63f0
+
+memorymy.free.ngrok.cc
+
+# 公众号设置——功能设置——JS接口安全域名
+memorymy.free.ngrok.cc/yigo
+```
+
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd1d5c242c8a2968f&redirect_uri=http%3A%2F%2Fzhouzhongyuan.club%2Fpay&response_type=code&scope=snsapi_base&state=#wechat_redirect
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd1d5c242c8a2968f&redirect_uri=http%3A%2F%2Fmemorymy.free.ngrok.cc%2Fyigo%2Fpay&response_type=code&scope=snsapi_base&state=#wechat_redirect
+
+http://memorymy.free.ngrok.cc/yigo/pay
+
+
+
+
+## wl
+
+```
+wl.zhouzhongyuan.club/yigo/pub/weixin
+
 ```

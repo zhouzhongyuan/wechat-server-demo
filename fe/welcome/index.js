@@ -84,7 +84,7 @@ let headImgEl;
 function getJsConfig() {
     const param = {
         debug: true,
-        jsApiList: ['chooseImage', 'scanQRCode'],
+        jsApiList: ['chooseWXPay','chooseImage', 'scanQRCode'],
         url: location.href,
     };
     const api = 'http://zhouzhongyuan.com/api/jsConfig';
@@ -120,7 +120,7 @@ const init = async () => {
     wx.config(jsConfig);
     wx.ready(function () {
         wx.checkJsApi({
-            jsApiList: ['chooseImage', 'closeWindow'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            jsApiList: ['chooseImage', 'chooseWXPay'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
             success: function(res) {
                 console.log(res)
                 // 以键值对的形式返回，可用的api值true，不可用为false

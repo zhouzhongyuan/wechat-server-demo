@@ -3,7 +3,7 @@ import api from '../api';
 import config from '../config';
 
 const url = {
-        bind: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${config.appid}&redirect_uri=http%3A%2F%2Fzhouzhongyuan.com%2Fwechat%2Fbind&response_type=code&scope=snsapi_base&state=#wechat_redirect`,
+        bind: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${config.appid}&redirect_uri=http%3A%2F%2Fzhouzhongyuan.club%2Fpayt&response_type=code&scope=snsapi_base&state=#wechat_redirect`,
         welcome: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${config.appid}&redirect_uri=http%3A%2F%2Fzhouzhongyuan.com%2Fuserinfo&response_type=code&scope=snsapi_userinfo&state=#wechat_redirect`,
 };
 

@@ -10,6 +10,7 @@ import token from './route/token';
 import jsapiTicket from './route/jsapiTicket';
 import jsConfig from './route/jsConfig';
 import userInfo from './route/userInfo';
+import prePay from './route/prePay';
 
 const { db } = config;
 
@@ -23,6 +24,8 @@ async function init() {
     const app = express();
     app.use(express.query());
     app.use('/static', express.static(path.join(__dirname, 'fe')));
+    app.use(express.static(path.join(__dirname, 'static')));
+    app.use('/yigo/webapp', express.static(path.join(__dirname, 'fe/demo/build')));
     app.use('/users', users);
     app.use('/wechat', wechat);
     app.use('/openid', openid);
@@ -30,6 +33,7 @@ async function init() {
     app.use('/jsapiTicket', jsapiTicket);
     app.use('/api/userInfo', userInfo);
     app.use('/api/jsConfig', jsConfig);
+    app.use('/api/prePay', prePay);
     app.use('/authorizeURL', authorizeURL);
     app.get('/wechat/bind', (req, res) => {
         res.sendFile(path.resolve('fe/bind', 'index.html'));
@@ -37,8 +41,15 @@ async function init() {
     app.get('/userInfo', (req, res) => {
         res.sendFile(path.resolve('fe/dist', 'index.html'));
     });
-    app.listen(4000, () => {
-        console.log('wechat-server-demo listening on port 4000');   // eslint-disable-line
+    app.get('/demo', (req, res) => {
+        res.sendFile(path.resolve('fe/demo/build', 'index.html'));
+    });
+    app.get('/yigo/pay', (req, res) => {
+        res.sendFile(path.resolve('fe/pay', 'index.html'));
+    });
+    const port = 8089;
+    app.listen(port, () => {
+        console.log(`wechat-server-demo listening on port ${port}`);   // eslint-disable-line
     });
 }
 init();

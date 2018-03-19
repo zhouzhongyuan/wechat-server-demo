@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pay Test</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+        }
+        #pay{
+            background-color: green;
+            width: 50%;
+            height: 48px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<button id="pay">支付0.01元</button>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+
+    function getCode() {
+        const s = location.href;
+        const codeReg = /(?:.*?)code=(.*?)&/igm;
+        const r = codeReg.exec(s);
+        return r[1];
+    }
+
+    // TODO 向后台请求accessToken
+    const api = '/openid';
+
+    async function getOpenid(code) {
+        const params = {
+            code,
+        };
+        let query;
+        (function () {
+            const esc = encodeURIComponent;
+            query = Object.keys(params)
+                .map(k => `${esc(k)}=${esc(params[k])}`)
+                .join('&');
+        }());
+        const url = `${api}?${query}`;
+
+
+        const res = await fetch(url, {
+                method: 'GET',
+            }
+        )
+        console.log(res);
+        const r  = res.json();
+
+        console.log(r);
+        alert(r.openid);
+        return r.openid;
+    }
+
+    document.addEventListener('DOMContentLoaded', async (event) => {
+        const code = getCode();
+        console.log(code);
+        const params = {
+            code,
+        };
+        let query;
+        (function () {
+            const esc = encodeURIComponent;
+            query = Object.keys(params)
+                .map(k => `${esc(k)}=${esc(params[k])}`)
+                .join('&');
+        }());
+        const url = `${api}?${query}`;
+
+
+        fetch(url, {
+                method: 'GET',
+            }
+        ).then(r => r.json())
+            .then((res)=> {
+                alert(`openid is ${res.openid}`);
+                const openid = res.openid;
+                getPrepayId(openid);
+
+            });
+    });
+
+    function getPrepayId(openid) {
+        var pay = document.getElementById('pay');
+
+        let prepayInfo;
+
+        const api = '/api/prePay';
+
+
+        const params = {
+            ip:'138.68.23.128',
+            openid,
+        };
+        let query;
+        (function () {
+            const esc = encodeURIComponent;
+            query = Object.keys(params)
+                .map(k => `${esc(k)}=${esc(params[k])}`)
+                .join('&');
+        }());
+        const url = `${api}?${query}`;
+
+        fetch(url, {
+                method: 'GET',
+            }
+        ).then(r => r.json()).then((r) => {
+            prepayInfo = r;
+            console.log(r);
+        });
+
+
+        pay.addEventListener('click', async function () {
+            alert('Will pay');
+
+            const jsConfig = await getJsConfig();
+            jsConfig.jsApiList = jsConfig.jsApiList.split(',');
+            console.log(jsConfig);
+            wx.config(jsConfig);
+            wx.ready(function () {
+
+
+
+                wx.chooseWXPay({
+                    timestamp: prepayInfo.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                    nonceStr: prepayInfo.nonceStr, // 支付签名随机串，不长于 32 位
+                    package: prepayInfo.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                    signType: prepayInfo.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                    paySign: prepayInfo.paySign, // 支付签名
+                    success: function (res) {
+                        // 支付成功后的回调函数
+                        console.log(
+                            'pay success ',res
+                        )
+                    },
+                    fail: function (res) {
+                        // 支付成功后的回调函数
+                        console.log(
+                            'pay fail ',res
+                        )
+                    },
+
+                });
+
+
+//                wx.checkJsApi({
+//                    jsApiList: ['chooseWXPay', 'chooseImage', 'closeWindow'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+//                    success: function(res) {
+//                        console.log(res)
+//                        // 以键值对的形式返回，可用的api值true，不可用为false
+//                        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+//                    }
+//                });
+
+
+//                wx.chooseImage({
+//                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+//                    success: function (res) {
+//                        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+//                    }
+//                });
+            });
+            wx.error(function (res) {
+                console.log('ERROR: ',res);
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            });
+
+        }, false)
+    }
+
+
+
+
+
+    function getJsConfig() {
+        const param = {
+            debug: false,
+            jsApiList: ['chooseWXPay', 'chooseImage', 'scanQRCode'],
+            url: location.href,
+        };
+        const api = '/api/jsConfig';
+
+        var query;
+        (function () {
+            const esc = encodeURIComponent;
+            query = Object.keys(param)
+                .map(k => `${esc(k)}=${esc(param[k])}`)
+                .join('&');
+        }());
+        const url = `${api}?${query}`;
+        return new Promise((resolve, reject) => {
+            fetch(url, {
+                    method: 'GET',
+                }
+            )
+                .then(r => r.json())
+                .then((r) => {
+                    // console.log(r);
+                    resolve(r);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
